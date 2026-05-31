@@ -39,3 +39,47 @@ struct node* insertNode(struct node* current, char nama[15], long long int no_te
 
     return current;
 }
+
+struct node* searchNode(struct node* current, char nama[30])
+{
+    if(current == NULL)
+    {
+        return NULL;
+    }
+    
+    int hasil = strcmp(nama, current->nama);
+    if(hasil == 0)
+    {
+        return current;
+    }
+    else if(hasil < 0)
+    {
+        return searchNode(current->left, nama);
+    }
+    else
+    {
+        return searchNode(current->right, nama);
+    }
+}
+
+void cariKontak()
+{
+    char nama[30];
+
+    printf("Masukkan nama yang dicari: ");
+    scanf("%s", nama);
+
+    struct node* hasil = searchNode(root, nama);
+
+    if(hasil != NULL)
+    {
+        printf("\nKontak ditemukan!\n");
+        printf("Nama     : %s\n", hasil->nama);
+        printf("No Telp  : %lld\n", hasil->no_telp);
+    }
+    else
+    {
+        printf("\nKontak tidak ditemukan!\n");
+    }
+}
+
