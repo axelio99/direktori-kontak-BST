@@ -172,3 +172,29 @@ void hapusKontak()
     }
 }
 
+void inOrder(struct node* current)
+{
+    if(current != NULL)
+    {
+        inOrder(current->left);
+        printf("Nama     : %s\n", current->nama);
+        printf("No Telp  : %lld\n", current->no_telp);
+        printf("-------------------------\n");
+        inOrder(current->right);
+    }
+}
+
+void tampilkanSemuaKontak()
+{
+    if(root == NULL)
+    {
+        printf("Daftar kontak masih kosong!\n");
+    }
+    else
+    {
+        printf("\n==== Daftar Kontak ====\n");
+        printf("-------------------------\n");
+        inOrder(root);
+        printf("=========================\n");
+    }
+}
