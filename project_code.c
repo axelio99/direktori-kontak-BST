@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 struct node
 {
@@ -197,4 +198,49 @@ void tampilkanSemuaKontak()
         inOrder(root);
         printf("=========================\n");
     }
+}
+
+void cetakKontakRentangAbjad(struct node* current, char batasBawah, char batasAtas)
+{
+    if(current!=NULL)
+    {    
+        char hurufPertama = tolower(current->nama[0]);
+        char left = tolower(batasBawah);
+        char right = tolower(batasAtas);
+
+        if (hurufPertama > left)
+        {
+            cetakKontakRentangAbjad(current->left, batasBawah, batasAtas);
+        }
+
+        if (hurufPertama >= left && hurufPertama <= right)
+        {
+            printf("- %-15s : %lld\n", current->nama, current->no_telp);
+        }
+
+        if (hurufPertama < right)
+        {
+            cetakKontakRentangAbjad(current->right, batasBawah, batasAtas);
+        }
+    }
+}
+
+void cetakKontak(struct node* current)
+{
+    if(current == NULL){
+        printf("Daftar kontak masih kosong!\n");
+        return;
+    }
+    char batasBawah; char batasAtas;
+    printf("Input batas bawah: "); scanf(" %c", &batasBawah);
+    printf("Input batas atas: "); scanf(" %c", &batasAtas);
+    
+    while(getchar() != '\n');
+
+    printf("Tekan enter untuk mencetak kontak...\n"); getchar();
+
+    printf("Daftar kontak dari rentang '%c' sampai '%c':\n", batasBawah, batasAtas);
+    printf("===========================================\n");
+    cetakKontakRentangAbjad(current, batasBawah, batasAtas);
+    printf("===========================================\n");
 }
