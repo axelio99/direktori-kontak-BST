@@ -244,3 +244,37 @@ void cetakKontak(struct node* current)
     cetakKontakRentangAbjad(current, batasBawah, batasAtas);
     printf("===========================================\n");
 }
+
+int height(struct node* current) {
+    if(current == NULL) {
+        return 0; }
+
+int leftheight = height(current->left);
+int rightheight = height(current->right);
+
+if (leftheight > rightheight) {
+    return leftheight + 1; } 
+    return rightheight + 1;
+}
+
+void analisiskeseimbangantree() {
+    if(root == NULL) {
+        printf("Daftar kontak masih kosong!\n");
+        return; 
+    }
+
+    int tinggikiri = height(root->left);
+    int tinggikanan = height(root->right);
+    int balanceFactor = tinggikiri - tinggikanan;
+    
+    printf("\n=== Analisis Keseimbangan Tree kontak ===\n");
+    printf("Tinggi subtree kiri  : %d\n", tinggikiri);
+    printf("Tinggi subtree kanan : %d\n", tinggikanan);
+    printf("Balance Factor       : %d\n", balanceFactor);
+
+    if (balanceFactor >= -1 && balanceFactor <= 1) {
+        printf("Tree kontak seimbang\n");
+    } else {
+        printf("Tree kontak tidak seimbang\n");
+    }
+}
