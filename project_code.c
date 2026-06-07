@@ -278,3 +278,71 @@ void analisiskeseimbangantree() {
         printf("Tree kontak tidak seimbang\n");
     }
 }
+
+int main () {
+    int pilihan;
+    char nama[15];
+    long long int no_telp;
+
+    do{
+        printf("\n===========================\n");
+        printf("  Aplikasi Direktori Kontak\n");
+        printf("=============================\n");
+        printf("1. Tambah Kontak Baru\n");
+        printf("2. Cari Kontak\n");
+        printf("3. Hapus Kontak\n");
+        printf("4. Tampilkan Semua Kontak (A-Z)\n");
+        printf("5. Cetak Kontak Berdasarkan Rentang Abjad\n");
+        printf("6. Analisis Keseimbangan Tree Kontak\n");
+        printf("7. Keluar\n");
+        printf("=============================\n");
+        printf("Pilih menu (1-7): ");
+        scanf("%d", &pilihan);
+
+        while(getchar() != '\n');
+
+        switch(pilihan) {
+            case 1:
+                printf("\n[Tambah Kontak Baru]\n");
+                printf("Masukkan Nama (Max 14 huruf): ");
+                scanf("%14s", nama);
+                printf("Masukkan No Telp: ");
+                scanf("%lld", &no_telp);
+                root = insertNode(root, nama, no_telp);
+                printf("Kontak '%s' berhasil ditambahkan!\n", nama);
+                break;
+
+            case 2:
+                printf("\n[Cari Kontak]\n");
+                cariKontak();
+                break;
+            
+                case 3:
+                printf("\n[Hapus Kontak]\n");
+                hapusKontak();
+                break;
+
+            case 4:
+                tampilkanSemuaKontak();
+                break;
+
+            case 5:
+                printf("\n[Cetak Kontak Berdasarkan Rentang Abjad]\n");
+                cetakKontak(root);
+                break;
+            
+            case 6:
+                analisiskeseimbangantree();
+                break;
+            
+            case 7:
+                printf("Terima kasih telah menggunakan aplikasi direktori kontak!\n");
+                break;
+            
+            default:
+                printf("Pilihan tidak valid, silakan coba lagi.\n");
+        }
+    } while (pilihan != 7);
+
+    return 0;
+}
