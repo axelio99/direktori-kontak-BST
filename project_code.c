@@ -208,7 +208,7 @@ void cetakKontakRentangAbjad(struct node* current, char batasBawah, char batasAt
         char left = tolower(batasBawah);
         char right = tolower(batasAtas);
 
-        if (hurufPertama > left)
+        if (hurufPertama >= left)
         {
             cetakKontakRentangAbjad(current->left, batasBawah, batasAtas);
         }
@@ -218,7 +218,7 @@ void cetakKontakRentangAbjad(struct node* current, char batasBawah, char batasAt
             printf("- %-15s : %lld\n", current->nama, current->no_telp);
         }
 
-        if (hurufPertama < right)
+        if (hurufPertama <= right)
         {
             cetakKontakRentangAbjad(current->right, batasBawah, batasAtas);
         }
