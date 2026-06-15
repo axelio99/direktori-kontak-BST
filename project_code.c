@@ -287,7 +287,7 @@ int main () {
     long long int no_telp;
 
     do{
-        printf("\n===========================\n");
+        printf("=============================\n");
         printf("  Aplikasi Direktori Kontak\n");
         printf("=============================\n");
         printf("1. Tambah Kontak Baru\n");
