@@ -305,7 +305,8 @@ int main () {
             case 1:
                 printf("\n[Tambah Kontak Baru]\n");
                 printf("Masukkan Nama (Max 14 huruf): ");
-                scanf("%14s", nama);
+                scanf("%14[^\n]", nama);
+                while(getchar() != '\n');
                 printf("Masukkan No Telp: ");
                 scanf("%lld", &no_telp);
                 root = insertNode(root, nama, no_telp);
