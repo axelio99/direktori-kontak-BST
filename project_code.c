@@ -76,7 +76,7 @@ void cariKontak()
     {
         printf("\nKontak ditemukan!\n");
         printf("Nama     : %s\n", hasil->nama);
-        printf("No Telp  : %lld\n", hasil->no_telp);
+        printf("No Telp  : 0%lld\n", hasil->no_telp);
     }
     else
     {
@@ -179,7 +179,7 @@ void inOrder(struct node* current)
     {
         inOrder(current->left);
         printf("Nama     : %s\n", current->nama);
-        printf("No Telp  : %lld\n", current->no_telp);
+        printf("No Telp  : 0%lld\n", current->no_telp);
         printf("-------------------------\n");
         inOrder(current->right);
     }
@@ -215,7 +215,7 @@ void cetakKontakRentangAbjad(struct node* current, char batasBawah, char batasAt
 
         if (hurufPertama >= left && hurufPertama <= right)
         {
-            printf("- %-15s : %lld\n", current->nama, current->no_telp);
+            printf("- %-15s : 0%lld\n", current->nama, current->no_telp);
         }
 
         if (hurufPertama <= right)
