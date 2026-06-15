@@ -68,7 +68,8 @@ void cariKontak()
     char nama[30];
 
     printf("Masukkan nama yang dicari: ");
-    scanf("%s", nama);
+    scanf(" %29[^\n]", nama);
+    while(getchar() != '\n');
 
     struct node* hasil = searchNode(root, nama);
 
@@ -158,7 +159,8 @@ void hapusKontak()
     char nama[30];
     
     printf("Masukkan nama kontak yang ingin dihapus: ");
-    scanf("%s", nama);
+    scanf(" %29[^\n]", nama);
+    while(getchar() != '\n');
     
     struct node* hasil = searchNode(root, nama);
     
